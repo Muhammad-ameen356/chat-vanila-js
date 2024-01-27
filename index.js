@@ -38,6 +38,7 @@ const sendMessageBtn = document.getElementById("sendMessageBtn");
 const logoutBtn = document.getElementById("logoutBtn");
 const messageInput = document.getElementById("messageInput");
 const messageContainer = document.getElementById("messageContainer");
+const emailText = document.getElementById("emailText");
 
 function scrollToBottom() {
   messageContainer.scrollTop = messageContainer.scrollHeight;
@@ -56,12 +57,7 @@ const loadMessages = ({ uid }) => {
         const minutes = date.getMinutes();
         const formatedTime = `${hours}:${minutes}`;
 
-        console.log(uid, "uid");
-        console.log(messages.uid, "uid");
-
         const chatType = messages.uid === uid ? "chat-end" : "chat-start";
-
-        // console.log(chatType);
 
         return `
           <div class="chat ${chatType}">
@@ -90,6 +86,7 @@ const onLoad = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       loadMessages(user);
+      emailText && (emailText.innerText = user.email);
       if (currentPageName !== "" && currentPageName !== "index.html") {
         window.location.href = "/";
       }
