@@ -88,7 +88,7 @@ const onLoad = () => {
       loadMessages(user);
       emailText && (emailText.innerText = user.email);
       if (currentPageName !== "" && currentPageName !== "index.html") {
-        window.location.href = "/";
+        window.location.href = "index.html";
       }
     } else {
       if (currentPageName !== "login.html") {
