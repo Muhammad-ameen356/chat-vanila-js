@@ -182,7 +182,10 @@ const uploadImage = () => {
     return alert("No file selected");
   }
 
-  if (!metadata.type.startsWith("image/")) {
+  if (
+    !metadata.type.startsWith("image/") &&
+    !metadata.type.startsWith("video/")
+  ) {
     return alert("Invalid file type. Please select an image or video.");
   }
 
